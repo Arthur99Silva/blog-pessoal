@@ -1,3 +1,4 @@
+// No Usuario.java
 package com.blogpessoal.blog_pessoal.model;
 
 import javax.persistence.Entity;
@@ -5,27 +6,28 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity  // Indica que essa classe é uma entidade JPA, ou seja, será mapeada para uma tabela no banco de dados
+@Entity
 public class Usuario {
 
-    @Id  // Define o campo como a chave primária
-    @GeneratedValue(strategy = GenerationType.IDENTITY)  // Gera o valor da chave primária automaticamente (auto incremento)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    
     private String nome;
     private String email;
     private String senha;
+    private String username;  // Adicionando o campo username
 
     // Construtores, getters e setters
     public Usuario() {}
 
-    public Usuario(String nome, String email, String senha) {
+    public Usuario(String nome, String email, String senha, String username) {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
+        this.username = username;
     }
 
-    // Getters and setters
     public Long getId() {
         return id;
     }
@@ -56,5 +58,13 @@ public class Usuario {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }
