@@ -1,19 +1,25 @@
 package com.blogpessoal.blog_pessoal.controller;
 
-import com.blogpessoal.blog_pessoal.model.Usuario;
-import com.blogpessoal.blog_pessoal.services.UsuarioService; // Certifique-se de que o pacote de serviços está correto
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.blogpessoal.blog_pessoal.model.Usuario;
+import com.blogpessoal.blog_pessoal.services.UsuarioService;
+
 @RestController
-@RequestMapping("/usuarios")  // Definindo o caminho base para as requisições
+@RequestMapping("/usuarios")
 public class UsuarioController {
 
     @Autowired
-    private UsuarioService usuarioService; // Injetando o serviço de usuário
+    private UsuarioService usuarioService;
 
     // Endpoint para criar um novo usuário
     @PostMapping

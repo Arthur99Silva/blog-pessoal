@@ -1,4 +1,3 @@
-// No Usuario.java
 package com.blogpessoal.blog_pessoal.model;
 
 import javax.persistence.Entity;
@@ -16,7 +15,7 @@ public class Usuario {
     private String nome;
     private String email;
     private String senha;
-    private String username;  // Adicionando o campo username
+    private String username;
 
     // Construtores, getters e setters
     public Usuario() {}

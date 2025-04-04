@@ -1,7 +1,7 @@
 package com.blogpessoal.blog_pessoal.controller;
 
 import java.util.List;
-import java.util.Optional; // Certifique-se de que o pacote de serviços está correto
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,11 +15,11 @@ import com.blogpessoal.blog_pessoal.model.Postagem;
 import com.blogpessoal.blog_pessoal.services.PostagemService;
 
 @RestController
-@RequestMapping("/postagens")  // Caminho base para as postagens
+@RequestMapping("/postagens")  // Caminho postagens
 public class PostagemController {
 
     @Autowired
-    private PostagemService postagemService;  // Injetando o serviço de postagem
+    private PostagemService postagemService; 
 
     // Endpoint para criar uma nova postagem
     @PostMapping
@@ -39,7 +39,7 @@ public class PostagemController {
         return postagemService.buscarPostagensPorTitulo(titulo);
     }
 
-    // Endpoint para buscar postagens de um usuário específico
+    // Endpoint para buscar postagens de um usuarioo
     @GetMapping("/usuario/{usuarioId}")
     public List<Postagem> buscarPostagensPorUsuario(@PathVariable Long usuarioId) {
         return postagemService.buscarPostagensPorUsuario(usuarioId);

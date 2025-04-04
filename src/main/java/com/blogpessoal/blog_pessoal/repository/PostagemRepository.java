@@ -8,13 +8,13 @@ import org.springframework.stereotype.Repository;
 
 import com.blogpessoal.blog_pessoal.model.Postagem;
 
-@Repository  // Marcando a interface como um repositório Spring
+@Repository 
 public interface PostagemRepository extends JpaRepository<Postagem, Long> {
 
     // Consultar postagens pelo título
     List<Postagem> findByTitulo(String titulo);
     
-    // Consultar postagens por parte do título (usando LIKE)
+    // Consultar postagens por parte do título
     @Query("SELECT p FROM Postagem p WHERE p.titulo LIKE %:titulo%")
     List<Postagem> findByTituloContaining(String titulo);
     

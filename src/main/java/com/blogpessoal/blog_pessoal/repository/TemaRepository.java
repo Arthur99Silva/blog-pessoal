@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.blogpessoal.blog_pessoal.model.Tema;
 
-@Repository  // Marcando a interface como um repositório Spring
+@Repository
 public interface TemaRepository extends JpaRepository<Tema, Long> {
 
     // Consultar temas pelo nome

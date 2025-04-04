@@ -19,7 +19,7 @@ import com.blogpessoal.blog_pessoal.services.TemaService;
 public class TemaController {
 
     @Autowired
-    private TemaService temaService;  // Injetando o serviço de tema
+    private TemaService temaService;
 
     // Endpoint para criar um novo tema
     @PostMapping

@@ -16,7 +16,7 @@ public class Postagem {
     private String titulo;
     private String texto;
 
-    @ManyToOne  // Relacionamento Many-to-One com a entidade Usuario
+    @ManyToOne
     private Usuario usuario;
     //private Tema tema;
 

@@ -29,6 +29,9 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
+        // Log de depuração
+        System.out.println("Tentando autenticar usuário: " + username);
+
         // Cria um token de autenticação com as credenciais
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(username, password);
         return authenticationManager.authenticate(token);
@@ -36,9 +39,10 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response,
-                                            FilterChain chain, Authentication authResult) throws IOException, ServletException {
+                                            FilterChain chain, Authentication authResult) throws IOException, ServletException {                                        
 
         String username = authResult.getName();
+        System.out.println("Autenticação bem-sucedida para o usuário: " + username);
 
         // Gera o token JWT com uma expiração de 1 dia
         String token = Jwts.builder()
@@ -48,11 +52,11 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .compact();
 
         // Adiciona o token no cabeçalho da resposta
-        response.addHeader("Authorization", "Bearer " + token);
+        response.addHeader("Authorization", "Bearer" + token);
 
         // Além do cabeçalho, escreve o token no corpo da resposta (em JSON)
         response.setContentType("application/json");
-        response.getWriter().write("{\"token\": \"Bearer " + token + "\"}");
+        response.getWriter().write("{\"token\": \"Bearer" + token + "\"}");
         response.getWriter().flush();
     }
 }
