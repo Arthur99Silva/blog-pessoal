@@ -18,7 +18,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
-    private AuthenticationManager authenticationManager;
+    private final AuthenticationManager authenticationManager;
 
     public JWTAuthenticationFilter(AuthenticationManager authenticationManager) {
         this.authenticationManager = authenticationManager;
@@ -26,7 +26,6 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) {
-        // Coleta as credenciais do usuário a partir dos parâmetros da requisição
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
@@ -38,13 +37,14 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response,
                                             FilterChain chain, Authentication authResult) throws IOException, ServletException {
+
         String username = authResult.getName();
-        
+
         // Gera o token JWT com uma expiração de 1 dia
         String token = Jwts.builder()
                 .setSubject(username)
-                .setExpiration(new Date(System.currentTimeMillis() + 86400000))
-                .signWith(SignatureAlgorithm.HS512, "secret_key")  // Chave secreta - ajuste conforme necessário
+                .setExpiration(new Date(System.currentTimeMillis() + 86400000))  // 1 dia de expiração
+                .signWith(SignatureAlgorithm.HS512, "secret_key")  // Chave secreta para assinatura
                 .compact();
 
         // Adiciona o token no cabeçalho da resposta

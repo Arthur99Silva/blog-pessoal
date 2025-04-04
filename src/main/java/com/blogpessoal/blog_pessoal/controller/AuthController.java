@@ -11,10 +11,9 @@ import com.blogpessoal.blog_pessoal.model.LoginRequest;
 @RequestMapping("/auth")
 public class AuthController {
 
-    // Endpoint de Login (onde o JWT será gerado)
     @PostMapping("/login")
     public String login(@RequestBody LoginRequest loginRequest) {
-        // A autenticação e geração de token serão feitas pelos filtros definidos acima
+        // O token será gerado e retornado pelos filtros de autenticação e autorização
         return "Login bem-sucedido. Token gerado!";
     }
 }

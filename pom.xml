@@ -7,7 +7,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.7.10</version>  <!-- Alterado para versão 2.7.10, compatível com Java 21 -->
+    <version>2.7.18</version>  <!-- Alterado para versão 2.7.10, compatível com Java 21 -->
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
 
@@ -26,6 +26,11 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-data-jpa</artifactId>
+    </dependency>
+
+    <dependency>
+        <groupId>org.springframework.security</groupId>
+        <artifactId>spring-security-crypto</artifactId>
     </dependency>
     
     <!-- Dependência do Spring Boot Starter para Segurança -->

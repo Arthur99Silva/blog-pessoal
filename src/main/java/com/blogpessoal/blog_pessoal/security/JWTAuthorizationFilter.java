@@ -5,7 +5,7 @@ import java.util.Collections;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;  // Importação correta
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -27,8 +27,9 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
             String token = header.replace("Bearer ", "");
 
             try {
-                String username = Jwts.parser()
+                String username = Jwts.parserBuilder()
                         .setSigningKey("secret_key")  // A chave secreta
+                        .build()
                         .parseClaimsJws(token)
                         .getBody()
                         .getSubject();
@@ -41,6 +42,7 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
                 response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             }
         }
+
         chain.doFilter(request, response);
     }
 }

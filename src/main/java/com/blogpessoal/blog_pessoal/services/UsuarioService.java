@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.blogpessoal.blog_pessoal.model.Usuario;
@@ -15,8 +16,12 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
+    private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
     // Método para salvar um novo usuário
     public Usuario salvarUsuario(Usuario usuario) {
+        String senhaCodificada = encoder.encode(usuario.getSenha());
+        usuario.setSenha(senhaCodificada);
         return usuarioRepository.save(usuario);
     }
 
