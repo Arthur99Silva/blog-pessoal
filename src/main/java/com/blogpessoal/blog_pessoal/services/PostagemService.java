@@ -39,4 +39,9 @@ public class PostagemService {
     public Optional<Postagem> buscarPostagemPorId(Long id) {
         return postagemRepository.findById(id);
     }
+
+    // Método para excluir uma postagem
+    public void excluirPostagem(Long id) {
+        postagemRepository.deleteById(id);
+    }
 }

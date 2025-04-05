@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -39,7 +41,7 @@ public class PostagemController {
         return postagemService.buscarPostagensPorTitulo(titulo);
     }
 
-    // Endpoint para buscar postagens de um usuarioo
+    // Endpoint para buscar postagens de um usuário
     @GetMapping("/usuario/{usuarioId}")
     public List<Postagem> buscarPostagensPorUsuario(@PathVariable Long usuarioId) {
         return postagemService.buscarPostagensPorUsuario(usuarioId);
@@ -49,5 +51,12 @@ public class PostagemController {
     @GetMapping("/{id}")
     public Optional<Postagem> buscarPostagemPorId(@PathVariable Long id) {
         return postagemService.buscarPostagemPorId(id);
+    }
+    
+    // Endpoint para excluir uma postagem
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> excluirPostagem(@PathVariable Long id) {
+        postagemService.excluirPostagem(id);
+        return ResponseEntity.noContent().build();
     }
 }

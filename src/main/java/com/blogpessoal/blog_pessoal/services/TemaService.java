@@ -34,4 +34,9 @@ public class TemaService {
     public Optional<Tema> buscarTemaPorId(Long id) {
         return temaRepository.findById(id);
     }
+
+    // Método para excluir um tema
+    public void excluirTema(Long id) {
+        temaRepository.deleteById(id);
+    }
 }
