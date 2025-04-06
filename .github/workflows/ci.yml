@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Faz o checkout do código
+      # 1. Faz o checkout do códig
       - name: Checkout Repository
         uses: actions/checkout@v3
 
