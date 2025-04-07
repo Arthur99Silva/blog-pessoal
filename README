@@ -137,13 +137,10 @@ mvn clean install sonar:sonar
 
 # 📝 Adendo
 
-Essa é a versão mais funcional do projeto. Foram feitos os testes usando o bando de dados MySQL localmente, assim como o H2.
-Tentei implemengar o SonnarQbe de varias maneiras, até certa parte estava funcional, mas encontrei um bug/erro onde toda vez em que acessava a página, sendo assim é possivel entrar no SonnarQube e realizar testes, porém usando o Github Actions o SonnarQube não se conectava, apenas apresentando o
+Essa é a versão mais funcional do projeto. Foram feitos os testes usando o banco de dados MySQL localmente, assim como o H2.
+Tentei implementar o SonnarQbe de varias maneiras, até certa parte estava funcional, mas encontrei um bug/erro onde toda vez em que acessava a página, sendo assim é possivel entrar no SonnarQube e realizar testes, porém usando o Github Actions o SonnarQube não se conectava, apenas apresentando o
 bug anteriormente comentado.
 eu tinha que resetar a senha impedindo de entrar para fazer os testes, criei um branch apenas para realizar os testes.
-Quanto ao Swagger, funcionou, porém quebrou um pouco meu código deixando com alguns bugs na hora de realizar ações do requisitos funcionais, por conta do tempo não consegui identificar o problema.
-Nessa versão tentei deixar tudo bem comentado e obedecendo boas práticas de programação. Em meus testes todas a funções funcionaram perfeitamente.
-Qualquer dúvida estou a disposição.
 
 Observação: Existem duas branchs, a main, que onde esta o projeto com os controllers adaptados para o SWAGGER, com os requisitos funcionais em funcionamento 100%, e a branch Testes, onde o projeto esta completamente funcional, usando o H2 e os banco de dados local, porém com parte do SonnarQube funcionando.
 
