@@ -16,32 +16,41 @@ import org.springframework.web.bind.annotation.RestController;
 import com.blogpessoal.blog_pessoal.model.Tema;
 import com.blogpessoal.blog_pessoal.services.TemaService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 @RestController
-@RequestMapping("/temas")  // Caminho base para os temas
+@RequestMapping("/temas")
+@Tag(name = "Temas", description = "Endpoints para gerenciar temas das postagens")
 public class TemaController {
 
     @Autowired
     private TemaService temaService;
 
-    // Endpoint para criar um novo tema
+    @Operation(summary = "Criar novo tema")
+    @ApiResponse(responseCode = "200", description = "Tema criado com sucesso")
     @PostMapping
     public Tema salvarTema(@RequestBody Tema tema) {
         return temaService.salvarTema(tema);
     }
 
-    // Endpoint para listar todos os temas
+    @Operation(summary = "Listar todos os temas")
+    @ApiResponse(responseCode = "200", description = "Lista de temas obtida com sucesso")
     @GetMapping
     public List<Tema> buscarTodosTemas() {
         return temaService.buscarTodosTemas();
     }
 
-    // Endpoint para buscar um tema por ID
+    @Operation(summary = "Buscar tema por ID")
+    @ApiResponse(responseCode = "200", description = "Tema encontrado com sucesso")
     @GetMapping("/{id}")
     public Optional<Tema> buscarTemaPorId(@PathVariable Long id) {
         return temaService.buscarTemaPorId(id);
     }
-    
-    // Endpoint para excluir um tema
+
+    @Operation(summary = "Excluir tema por ID")
+    @ApiResponse(responseCode = "204", description = "Tema excluído com sucesso")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> excluirTema(@PathVariable Long id) {
         temaService.excluirTema(id);

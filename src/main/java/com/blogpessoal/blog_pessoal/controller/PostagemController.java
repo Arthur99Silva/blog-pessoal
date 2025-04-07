@@ -16,44 +16,55 @@ import org.springframework.web.bind.annotation.RestController;
 import com.blogpessoal.blog_pessoal.model.Postagem;
 import com.blogpessoal.blog_pessoal.services.PostagemService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 @RestController
-@RequestMapping("/postagens")  // Caminho postagens
+@RequestMapping("/postagens")
+@Tag(name = "Postagens", description = "Endpoints para gerenciar postagens")
 public class PostagemController {
 
     @Autowired
-    private PostagemService postagemService; 
+    private PostagemService postagemService;
 
-    // Endpoint para criar uma nova postagem
+    @Operation(summary = "Criar nova postagem")
+    @ApiResponse(responseCode = "200", description = "Postagem criada com sucesso")
     @PostMapping
     public Postagem salvarPostagem(@RequestBody Postagem postagem) {
         return postagemService.salvarPostagem(postagem);
     }
 
-    // Endpoint para listar todas as postagens
+    @Operation(summary = "Listar todas as postagens")
+    @ApiResponse(responseCode = "200", description = "Lista de postagens obtida com sucesso")
     @GetMapping
     public List<Postagem> buscarTodasPostagens() {
         return postagemService.buscarTodasPostagens();
     }
 
-    // Endpoint para buscar postagens pelo título
+    @Operation(summary = "Buscar postagens por título")
+    @ApiResponse(responseCode = "200", description = "Postagens com título específico obtidas com sucesso")
     @GetMapping("/titulo/{titulo}")
     public List<Postagem> buscarPostagensPorTitulo(@PathVariable String titulo) {
         return postagemService.buscarPostagensPorTitulo(titulo);
     }
 
-    // Endpoint para buscar postagens de um usuário
+    @Operation(summary = "Buscar postagens por usuário")
+    @ApiResponse(responseCode = "200", description = "Postagens do usuário obtidas com sucesso")
     @GetMapping("/usuario/{usuarioId}")
     public List<Postagem> buscarPostagensPorUsuario(@PathVariable Long usuarioId) {
         return postagemService.buscarPostagensPorUsuario(usuarioId);
     }
 
-    // Endpoint para buscar uma postagem por ID
+    @Operation(summary = "Buscar postagem por ID")
+    @ApiResponse(responseCode = "200", description = "Postagem encontrada com sucesso")
     @GetMapping("/{id}")
     public Optional<Postagem> buscarPostagemPorId(@PathVariable Long id) {
         return postagemService.buscarPostagemPorId(id);
     }
-    
-    // Endpoint para excluir uma postagem
+
+    @Operation(summary = "Excluir postagem por ID")
+    @ApiResponse(responseCode = "204", description = "Postagem excluída com sucesso")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> excluirPostagem(@PathVariable Long id) {
         postagemService.excluirPostagem(id);
