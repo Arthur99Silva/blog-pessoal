@@ -17,7 +17,7 @@ jobs:
           - 9001:9000
         env:
           SONARQUBE_ADMIN_PASSWORD: admin
-
+          SONARQUBE_WEB_JAVA_OPTS: "-Dsonar.security.forcePasswordReset=false"
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
