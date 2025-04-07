@@ -6,4 +6,4 @@ Quanto ao Swagger, funcionou, porém quebrou um pouco meu código deixando com a
 Nessa versão tentei deixar tudo bem comentado e obedecendo boas práticas de programação. Em meus testes todas a funções funcionaram perfeitamente.
 Qualquer dúvida estou a disposição.
 
-Observação: Existem duas branchs, a main, que onde esta o projeto com os controllers adaptados para o SWAGGER, versão que tem certa instabilidade, e a branch Testes, onde o projeto esta completamente funcional, usando o H2 e os banco de dados local.
+Observação: Existem duas branchs, a main, que onde esta o projeto com os controllers adaptados para o SWAGGER, com os requisitos funcionais em funcionamento 100%, e a branch Testes, onde o projeto esta completamente funcional, usando o H2 e os banco de dados local, porém com parte do SonnarQube funcionando.
