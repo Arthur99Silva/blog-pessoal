@@ -2,9 +2,9 @@ name: CI Build and SonarQube Analysis
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "test-h2" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main", "test-h2" ]
 
 jobs:
   build:
@@ -20,7 +20,7 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
-      # Ativa o perfil de testes para usar o H2 (caso não esteja configurado automaticamente)
+      # Ativa o perfil de testes
       - name: Build with Maven (using H2 for tests)
         env:
           SPRING_PROFILES_ACTIVE: test
