@@ -11,25 +11,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Faz o checkout do códig
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      # 2. Configura o Java 21
       - name: Set up Java 21
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: '21'
 
-      # 3. Compila o projeto e roda os testes
-      - name: Build with Maven
+      # Ativa o perfil de testes para usar o H2 (caso não esteja configurado automaticamente)
+      - name: Build with Maven (using H2 for tests)
+        env:
+          SPRING_PROFILES_ACTIVE: test
         run: mvn clean install
 
-      # 4. Executa a análise do SonarQube
       - name: Run SonarQube Analysis
         env:
-          # Configure o token do SonarQube como secret no GitHub (Settings > Secrets > Actions)
           SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
-        run: |
-          mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.token=$SONAR_TOKEN
+        run: mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.token=$SONAR_TOKEN
