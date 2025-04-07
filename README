@@ -145,11 +145,4 @@ Qualquer dúvida estou a disposição.
 
 Observação: Existem duas branchs, a main, que onde esta o projeto com os controllers adaptados para o SWAGGER, com os requisitos funcionais em funcionamento 100%, e a branch Testes, onde o projeto esta completamente funcional, usando o H2 e os banco de dados local, porém com parte do SonnarQube funcionando.
 
-<div align="center">
-
-
-
-
-</div>
-
 ---
