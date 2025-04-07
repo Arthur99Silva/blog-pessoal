@@ -3,12 +3,13 @@ package com.blogpessoal.blog_pessoal.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.blogpessoal.blog_pessoal.security.JWTAuthenticationFilter;
@@ -16,12 +17,18 @@ import com.blogpessoal.blog_pessoal.security.JWTAuthorizationFilter;
 import com.blogpessoal.blog_pessoal.services.UserDetailsServiceImpl;
 
 @Configuration
-public class SecurityConfig {
+@EnableWebSecurity
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final UserDetailsServiceImpl userDetailsService;
 
     public SecurityConfig(UserDetailsServiceImpl userDetailsService) {
         this.userDetailsService = userDetailsService;
+    }
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
 
     @Bean
@@ -30,27 +37,34 @@ public class SecurityConfig {
     }
 
     @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
-        return authenticationConfiguration.getAuthenticationManager();
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
     }
 
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http, AuthenticationManager authManager) throws Exception {
-        
-        JWTAuthenticationFilter authenticationFilter = new JWTAuthenticationFilter(authManager);
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        JWTAuthenticationFilter authenticationFilter = new JWTAuthenticationFilter(authenticationManagerBean());
         authenticationFilter.setFilterProcessesUrl("/auth/login");
 
-        return http
-            .csrf().disable()
+        http.csrf().disable()
             .authorizeRequests()
-                .antMatchers("/auth/**").permitAll() // Libera /auth/login
+                .antMatchers(
+                    "/auth/**",                   // libera login
+                    "/swagger-ui/**",              // libera swagger-ui
+                    "/swagger-ui.html",            // libera swagger-ui.html
+                    "/v3/api-docs/**",              // libera documentação da api
+                    "/v3/api-docs",
+                    "/swagger-resources/**",        // libera recursos do swagger
+                    "/webjars/**",                  // libera js/css estático
+                    "/api-docs/**",                 // libera api-docs
+                    "/swagger-ui/index.html"        // libera o index do swagger-ui
+                ).permitAll()
                 .anyRequest().authenticated()
             .and()
             .addFilter(authenticationFilter)
             .addFilterBefore(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
             .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-            .and()
-            .build();
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }
 }
