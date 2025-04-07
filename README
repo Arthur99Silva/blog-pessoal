@@ -1,79 +1,78 @@
+# 📖 **Blog Pessoal - Backend - Montreal**  
 
-# 📖 Blog Pessoal - Backend - Montreal
-
-Projeto de backend de um **Blog Pessoal** desenvolvido com **Spring Boot 2.7.18** 🚀, **MySQL** 🛢️, **SonarQube** 📊 e documentado com **Swagger** 📄.
-
----
-
-## 🛠️ Tecnologias Utilizadas
-
-- ☕ **Java 17**
-- 🌱 **Spring Boot 2.7.18**
-- 🛢️ **MySQL**
-- 🔒 **Spring Security** + **JWT**
-- 📚 **Swagger** (OpenAPI)
-- 🧹 **SonarQube** (Análise de Código)
-- 📦 **Maven**
+Projeto de backend de um **Blog Pessoal** desenvolvido com **Spring Boot 2.7.18** 🚀, **MySQL** 🛢️, **SonarQube** 📊 e documentado com **Swagger** 📄.  
 
 ---
 
-## 📋 Funcionalidades
+## 🛠️ **Tecnologias Utilizadas**  
 
-### 👥 Gerenciamento de Usuários
-- Cadastro de novos usuários
-- Atualização e exclusão de usuários
-- Login com validação de e-mail e senha
-- Geração de token JWT para autenticação
-
-### 📝 Gerenciamento de Postagens
-- Criação, atualização e exclusão de postagens
-- Listagem de todas as postagens
-- Filtro de postagens por autor e/ou tema
-
-### 🎨 Gerenciamento de Temas
-- Criação, atualização e exclusão de temas
-- Listagem de todos os temas
-
-### 🔐 Segurança
-- Autenticação de usuários com JWT
-- Controle de permissões baseado no tipo de usuário
-- Senhas armazenadas com BCrypt
-
-### 🔍 Análise de Código
-- Integração com SonarQube para métricas de qualidade
-- Análise de vulnerabilidades, complexidade e cobertura de testes
+- ☕ **Java 17**  
+- 🌱 **Spring Boot 2.7.18**  
+- 🛢️ **MySQL**  
+- 🔒 **Spring Security** + **JWT**  
+- 📚 **Swagger** (OpenAPI)  
+- 🧹 **SonarQube** (Análise de Código)  
+- 📦 **Maven**  
 
 ---
 
-## 🌐 Endpoints da API
+## 📋 **Funcionalidades**  
 
-| Recurso | Método | Caminho | Descrição |
-|:--------|:-------|:--------|:----------|
-| Usuário | `POST` | `/api/usuarios` | Cadastrar novo usuário |
-| Usuário | `PUT` | `/api/usuarios/{id}` | Atualizar usuário |
-| Usuário | `DELETE` | `/api/usuarios/{id}` | Deletar usuário |
-| Usuário | `POST` | `/api/usuarios/login` | Logar e gerar token |
-| Postagem | `POST` | `/api/postagens` | Criar nova postagem |
-| Postagem | `PUT` | `/api/postagens/{id}` | Atualizar postagem |
-| Postagem | `DELETE` | `/api/postagens/{id}` | Deletar postagem |
-| Postagem | `GET` | `/api/postagens` | Listar todas postagens |
-| Postagem | `GET` | `/api/postagens/filtro` | Filtrar por autor/tema |
-| Tema | `POST` | `/api/temas` | Criar novo tema |
-| Tema | `PUT` | `/api/temas/{id}` | Atualizar tema |
-| Tema | `DELETE` | `/api/temas/{id}` | Deletar tema |
-| Tema | `GET` | `/api/temas` | Listar todos os temas |
+### 👥 **Gerenciamento de Usuários**  
+- ✅ Cadastro de novos usuários  
+- 🔄 Atualização e exclusão de usuários  
+- 🔑 Login com validação de e-mail e senha  
+- 🪙 Geração de token JWT para autenticação  
+
+### 📝 **Gerenciamento de Postagens**  
+- ✨ Criação, atualização e exclusão de postagens  
+- 📜 Listagem de todas as postagens  
+- 🔍 Filtro de postagens por autor e/ou tema  
+
+### 🎨 **Gerenciamento de Temas**  
+- 🎯 Criação, atualização e exclusão de temas  
+- 📋 Listagem de todos os temas  
+
+### 🔐 **Segurança**  
+- 🔒 Autenticação de usuários com JWT  
+- 🚫 Controle de permissões baseado no tipo de usuário  
+- 🔑 Senhas armazenadas com BCrypt  
+
+### 🔍 **Análise de Código**  
+- 📈 Integração com SonarQube para métricas de qualidade  
+- 🛡️ Análise de vulnerabilidades, complexidade e cobertura de testes  
 
 ---
 
-## 🛡️ Segurança
+## 🌐 **Endpoints da API**  
 
-- Autenticação baseada em tokens JWT 🔐
-- Controle de acesso para proteger endpoints 🚫
-- Senhas criptografadas usando BCrypt 🔑
+| **Recurso** | **Método** | **Caminho**               | **Descrição**                     |  
+|-------------|------------|---------------------------|-----------------------------------|  
+| Usuário     | `POST`     | `/api/usuarios`           | Cadastrar novo usuário           |  
+| Usuário     | `PUT`      | `/api/usuarios/{id}`      | Atualizar usuário                |  
+| Usuário     | `DELETE`   | `/api/usuarios/{id}`      | Deletar usuário                  |  
+| Usuário     | `POST`     | `/api/usuarios/login`     | Logar e gerar token              |  
+| Postagem    | `POST`     | `/api/postagens`          | Criar nova postagem              |  
+| Postagem    | `PUT`      | `/api/postagens/{id}`     | Atualizar postagem               |  
+| Postagem    | `DELETE`   | `/api/postagens/{id}`     | Deletar postagem                 |  
+| Postagem    | `GET`      | `/api/postagens`          | Listar todas postagens           |  
+| Postagem    | `GET`      | `/api/postagens/filtro`   | Filtrar por autor/tema           |  
+| Tema        | `POST`     | `/api/temas`              | Criar novo tema                  |  
+| Tema        | `PUT`      | `/api/temas/{id}`         | Atualizar tema                   |  
+| Tema        | `DELETE`   | `/api/temas/{id}`         | Deletar tema                     |  
+| Tema        | `GET`      | `/api/temas`              | Listar todos os temas            |  
 
 ---
 
-## 🛠️ Como Rodar o Projeto
+## 🛡️ **Segurança**  
+
+- 🔒 **Autenticação baseada em tokens JWT**  
+- 🚫 **Controle de acesso** para proteger endpoints  
+- 🔑 **Senhas criptografadas** usando BCrypt  
+
+---
+
+## 🚀 **Como Rodar o Projeto**  
 
 ```bash
 # Clone o repositório
@@ -86,58 +85,32 @@ cd blog-pessoal-backend
 
 # Execute o projeto
 mvn spring-boot:run
-```
 
-A aplicação estará disponível em:  
-➡️ `http://localhost:8080`
+🌐 **A aplicação estará disponível em:**
+➡️ http://localhost:8080
 
-A documentação Swagger estará disponível em:  
-➡️ `http://localhost:8080/swagger-ui/index.html`
+📄 **Documentação Swagger:**
+➡️ http://localhost:8080/swagger-ui/index.html
 
----
-
-## 📊 Configuração SonarQube
-
-```bash
+📊 **Configuração SonarQube**
 # Rodar SonarQube localmente via Docker
 docker run -d --name sonarqube -p 9000:9000 sonarqube
-```
 
-### Exemplo de arquivo `sonar-project.properties`
-
-```properties
-sonar.projectKey=blog-pessoal
-sonar.projectName=Blog Pessoal Backend
-sonar.host.url=http://localhost:9000
-sonar.login=<seu_token>
-sonar.language=java
-sonar.sourceEncoding=UTF-8
-sonar.sources=src/main/java
-sonar.tests=src/test/java
-sonar.java.binaries=target/classes
-```
-
-Para executar a análise de qualidade:
-
-```bash
+# Para executar a análise de qualidade:
 mvn clean install sonar:sonar
-```
 
----
+✨ Diferenciais do Projeto
+🧹 Código limpo e bem organizado
 
-## ✨ Diferenciais do Projeto
+🏗️ Arquitetura MVC e DTOs
 
-- Código limpo e bem organizado 🧹
-- Arquitetura MVC e DTOs 🛠️
-- Segurança robusta 🔒
-- Endpoints documentados 📄
-- Análise contínua de qualidade com SonarQube 📈
+🔒 Segurança robusta
 
----
+📄 Endpoints documentados
 
-# 📝 Adendo
+📈 Análise contínua de qualidade com SonarQube
 
-Essa é a versão mais funcional do projeto. Foram feitos os testes usando o banco de dados MySQL localmente, assim como o H2.
-Essa versão esta usando o GithubActions para acessar o SonnarQube.
+📝 Adendo
+Essa é a versão mais funcional do projeto. Foram feitos testes usando MySQL e H2 localmente.
+🔧 Integração contínua: Utilização do GitHub Actions para análise com SonarQube.
 
----
