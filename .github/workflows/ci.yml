@@ -13,8 +13,6 @@ jobs:
     services:
       sonarqube:
         image: sonarqube:lts
-        ports:
-          - 9000:9000
         options: >-
           --health-cmd "curl -f http://localhost:9000/api/system/health || exit 1" 
           --health-interval 10s 
@@ -31,7 +29,6 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
-      # Ativa o perfil de testes para utilizar o H2 como banco in-memory
       - name: Build with Maven (using H2 for tests)
         env:
           SPRING_PROFILES_ACTIVE: test
