@@ -10,6 +10,29 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    services:
+      # Serviço do SonarQube
+      sonarqube:
+        image: sonarqube:latest
+        ports:
+          - 9000:9000
+        options: >-
+          --health-cmd="curl -f http://localhost:9000/api/system/health || exit 1"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=12
+
+      # Serviço do MySQL (caso continue usando-o em outros testes)
+      mysql:
+        image: mysql:8.0
+        ports:
+          - 3306:3306
+        env:
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_DATABASE: blog_pessoal_test
+        options: >-
+          --health-cmd "mysqladmin ping --silent" --health-interval 10s --health-timeout=5s --health-retries=3
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
@@ -20,13 +43,30 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
-      # Ativa o perfil de testes
+      # Espera o MySQL estar pronto (caso seus testes precisem dele)
+      - name: Wait for MySQL to be ready
+        run: |
+          echo "Waiting for MySQL..."
+          while ! mysqladmin ping -h "127.0.0.1" --silent; do sleep 2; done
+
+      # Espera o SonarQube estar pronto
+      - name: Wait for SonarQube to be ready
+        run: |
+          echo "Waiting for SonarQube..."
+          until curl -s http://localhost:9000/api/system/health | grep -q '"status":"UP"'; do
+            echo "Aguardando SonarQube..."
+            sleep 5
+          done
+
+      # Build com Maven, ativando o profile de testes (usando H2, se configurado)
       - name: Build with Maven (using H2 for tests)
         env:
           SPRING_PROFILES_ACTIVE: test
         run: mvn clean install
 
+      # Executa a análise do SonarQube
       - name: Run SonarQube Analysis
         env:
           SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
-        run: mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.token=$SONAR_TOKEN
+        run: |
+          mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.token=$SONAR_TOKEN
