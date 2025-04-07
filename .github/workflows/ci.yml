@@ -35,7 +35,7 @@ jobs:
         run: |
           echo "Waiting for SonarQube to be ready..."
           for i in {1..30}; do
-            status=$(curl -s http://localhost:9001/api/system/health)
+            status=$(curl -s -u admin:darta http://localhost:9001/api/system/health)
             echo "$status"
             if echo "$status" | grep -q '"status":"UP"'; then
               echo "SonarQube is ready"
