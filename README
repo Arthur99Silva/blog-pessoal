@@ -1,3 +1,127 @@
+# 📖 Blog Pessoal - Backend - Montreal
+
+Projeto de backend de um **Blog Pessoal** desenvolvido com **Spring Boot 2.7.18** 🚀, **MySQL** 🛢️, **SonarQube** 📊 e documentado com **Swagger** 📄.
+
+## 🛠️ Tecnologias Utilizadas
+
+- ☕ **Java 17**
+- 🌱 **Spring Boot 2.7.18**
+- 🛢️ **MySQL**
+- 🔒 **Spring Security** + **JWT**
+- 📚 **Swagger** (OpenAPI)
+- 🧹 **SonarQube** (Análise de Código)
+- 📦 **Maven**
+
+## 📋 Funcionalidades
+
+### 👥 Gerenciamento de Usuários
+- Cadastro de novos usuários
+- Atualização e exclusão de usuários
+- Login com validação de e-mail e senha
+- Geração de token JWT para autenticação
+
+### 📝 Gerenciamento de Postagens
+- Criação, atualização e exclusão de postagens
+- Listagem de todas as postagens
+- Filtro de postagens por autor e/ou tema
+
+### 🎨 Gerenciamento de Temas
+- Criação, atualização e exclusão de temas
+- Listagem de todos os temas
+
+### 🔐 Segurança
+- Autenticação de usuários com JWT
+- Controle de permissões por tipo de usuário
+- Senhas armazenadas com BCrypt
+
+### 🔍 Análise de Código
+- Integração com **SonarQube** para métricas de qualidade
+- Análise de vulnerabilidades, complexidade e cobertura de testes
+
+## 🌐 Endpoints da API
+
+### 🔗 Usuário (`/api/usuarios`)
+- `POST /` - Cadastrar novo usuário
+- `PUT /{id}` - Atualizar usuário
+- `DELETE /{id}` - Deletar usuário
+- `POST /login` - Logar e gerar token
+
+### 🔗 Postagem (`/api/postagens`)
+- `POST /` - Criar postagem
+- `PUT /{id}` - Atualizar postagem
+- `DELETE /{id}` - Deletar postagem
+- `GET /` - Listar todas postagens
+- `GET /filtro?autor={id}&tema={id}` - Filtrar postagens
+
+### 🔗 Tema (`/api/temas`)
+- `POST /` - Criar tema
+- `PUT /{id}` - Atualizar tema
+- `DELETE /{id}` - Deletar tema
+- `GET /` - Listar todos os temas
+
+## 🛡️ Segurança
+
+- Tokens JWT usados para autenticação 🔒
+- Controle de acesso para proteger endpoints 🚫
+- Senhas criptografadas com BCrypt 🔑
+
+## 🛠️ Como Rodar o Projeto
+
+```bash
+# Clone o repositório
+git clone https://github.com/Arthur99Silva/blog-pessoal.git
+
+# Navegue até o diretório do projeto
+cd blog-pessoal-backend
+
+# Configure seu banco de dados no application.properties
+
+# Execute o projeto
+mvn spring-boot:run
+```
+
+A aplicação estará disponível em: `http://localhost:8080`
+
+A documentação da API estará disponível em:  
+➡️ `http://localhost:8080/swagger-ui/index.html`
+
+## 🎯 Configuração SonarQube
+
+```bash
+docker run -d --name sonarqube -p 9000:9000 sonarqube
+```
+
+Depois de iniciar o SonarQube, configure o arquivo `sonar-project.properties`:
+
+```properties
+sonar.projectKey=blog-pessoal
+sonar.projectName=Blog Pessoal Backend
+sonar.host.url=http://localhost:9000
+sonar.login=<seu_token>
+sonar.language=java
+sonar.sourceEncoding=UTF-8
+sonar.sources=src/main/java
+sonar.tests=src/test/java
+sonar.java.binaries=target/classes
+```
+
+Para rodar a análise:
+
+```bash
+mvn clean install sonar:sonar
+```
+
+## ✨ Diferenciais do Projeto
+
+- Código limpo e bem organizado 🧹
+- Padrão de camadas (Controller, Service, Repository, Model, DTO) 🛠️
+- Segurança robusta 🔒
+- Endpoints documentados 📄
+- Análise contínua de qualidade com SonarQube 📈
+
+---
+
+## ✨ Adendos:
 Essa é a versão mais funcional do projeto. Foram feitos os testes usando o bando de dados MySQL localmente, assim como o H2.
 Tentei implemengar o SonnarQbe de varias maneiras, até certa parte estava funcional, mas encontrei um bug/erro onde toda vez em que acessava a página, sendo assim é possivel entrar no SonnarQube e realizar testes, porém usando o Github Actions o SonnarQube não se conectava, apenas apresentando o
 bug anteriormente comentado.
