@@ -12,7 +12,10 @@ jobs:
 
     services:
       sonarqube:
-        image: sonarqube
+        image: sonarqube:community
+        env:
+          SONARQUBE_WEB_JAVA_OPTS: "-Xmx512m"
+          SONARQUBE_CE_JAVA_OPTS: "-Xmx512m"
         ports:
           - 9000:9000
         options: >-
@@ -31,7 +34,6 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
-      # Ativa o perfil de testes para usar o H2 (ou outro banco in-memory)
       - name: Build with Maven (using H2 for tests)
         env:
           SPRING_PROFILES_ACTIVE: test
