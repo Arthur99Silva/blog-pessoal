@@ -31,6 +31,9 @@ jobs:
           SPRING_PROFILES_ACTIVE: test
         run: mvn clean install
 
+      - name: Clear Sonar Cache
+        run: rm -rf ~/.sonar/cache
+
       - name: Run SonarQube Analysis
         env:
           SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
