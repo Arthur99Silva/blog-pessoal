@@ -2,9 +2,9 @@ name: CI Build and SonarQube Analysis
 
 on:
   push:
-    branches: [ "main", "test-h2" ]
+    branches: [ "testes" ]
   pull_request:
-    branches: [ "main", "test-h2" ]
+    branches: [ "testes" ]
 
 jobs:
   build:
