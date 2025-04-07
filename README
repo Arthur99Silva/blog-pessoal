@@ -1,108 +1,109 @@
 
----
-
-<div align="center">
-
 # 📖 Blog Pessoal - Backend - Montreal
-🚀 Projeto de Backend desenvolvido com Spring Boot, MySQL, JWT, SonarQube e documentado com Swagger! 🚀
 
-</div>
+Projeto de backend de um **Blog Pessoal** desenvolvido com **Spring Boot 2.7.18** 🚀, **MySQL** 🛢️, **SonarQube** 📊 e documentado com **Swagger** 📄.
 
 ---
 
-## 🔥 Tecnologias Utilizadas
+## 🛠️ Tecnologias Utilizadas
 
-<div align="center">
-  
-| Tecnologia | Versão |
-|:-----------|:-------|
-| ☕ Java | 17+ |
-| 🌱 Spring Boot | 2.7.18 |
-| 🛢️ Banco de Dados | MySQL |
-| 🔒 Segurança | Spring Security + JWT |
-| 📚 Documentação | Swagger |
-| 📊 Análise de Código | SonarQube |
-| 📦 Gerenciamento de Dependências | Maven |
-
-</div>
+- ☕ **Java 17**
+- 🌱 **Spring Boot 2.7.18**
+- 🛢️ **MySQL**
+- 🔒 **Spring Security** + **JWT**
+- 📚 **Swagger** (OpenAPI)
+- 🧹 **SonarQube** (Análise de Código)
+- 📦 **Maven**
 
 ---
 
 ## 📋 Funcionalidades
 
-- **👥 Usuários**
-  - Cadastro, atualização e exclusão
-  - Autenticação com JWT
+### 👥 Gerenciamento de Usuários
+- Cadastro de novos usuários
+- Atualização e exclusão de usuários
+- Login com validação de e-mail e senha
+- Geração de token JWT para autenticação
 
-- **📝 Postagens**
-  - Criar, editar, excluir e listar postagens
-  - Filtro por autor e/ou tema
+### 📝 Gerenciamento de Postagens
+- Criação, atualização e exclusão de postagens
+- Listagem de todas as postagens
+- Filtro de postagens por autor e/ou tema
 
-- **🎨 Temas**
-  - Gerenciar temas (CRUD)
+### 🎨 Gerenciamento de Temas
+- Criação, atualização e exclusão de temas
+- Listagem de todos os temas
 
-- **🔐 Segurança**
-  - Criptografia de senha com BCrypt
-  - Controle de permissões por tipo de usuário
+### 🔐 Segurança
+- Autenticação de usuários com JWT
+- Controle de permissões baseado no tipo de usuário
+- Senhas armazenadas com BCrypt
 
-- **📊 Qualidade**
-  - Análise contínua de código com SonarQube
-
----
-
-## 🚀 Como Executar o Projeto
-
-```bash
-# 1. Clone o repositório
-git clone https://github.com/seu-usuario/blog-pessoal-backend.git
-
-# 2. Acesse o diretório do projeto
-cd blog-pessoal-backend
-
-# 3. Configure seu banco de dados em application.properties
-
-# 4. Execute o projeto
-mvn spring-boot:run
-```
-
-📍 Acesse a aplicação:  
-`http://localhost:8080`
-
-📍 Documentação da API (Swagger UI):  
-`http://localhost:8080/swagger-ui/index.html`
+### 🔍 Análise de Código
+- Integração com SonarQube para métricas de qualidade
+- Análise de vulnerabilidades, complexidade e cobertura de testes
 
 ---
 
-## 🌐 Principais Endpoints
+## 🌐 Endpoints da API
 
-| Funcionalidade | Método | Endpoint | Descrição |
-|:---------------|:-------|:---------|:----------|
-| Cadastro de Usuário | `POST` | `/api/usuarios` | Cria novo usuário |
-| Login | `POST` | `/api/usuarios/login` | Gera token JWT |
-| Atualizar Usuário | `PUT` | `/api/usuarios/{id}` | Atualiza dados do usuário |
-| Criar Postagem | `POST` | `/api/postagens` | Nova postagem |
-| Listar Postagens | `GET` | `/api/postagens` | Lista todas postagens |
-| Filtrar Postagens | `GET` | `/api/postagens/filtro` | Filtro por autor/tema |
-| Gerenciar Tema | `POST/PUT/DELETE/GET` | `/api/temas` | CRUD de temas |
+| Recurso | Método | Caminho | Descrição |
+|:--------|:-------|:--------|:----------|
+| Usuário | `POST` | `/api/usuarios` | Cadastrar novo usuário |
+| Usuário | `PUT` | `/api/usuarios/{id}` | Atualizar usuário |
+| Usuário | `DELETE` | `/api/usuarios/{id}` | Deletar usuário |
+| Usuário | `POST` | `/api/usuarios/login` | Logar e gerar token |
+| Postagem | `POST` | `/api/postagens` | Criar nova postagem |
+| Postagem | `PUT` | `/api/postagens/{id}` | Atualizar postagem |
+| Postagem | `DELETE` | `/api/postagens/{id}` | Deletar postagem |
+| Postagem | `GET` | `/api/postagens` | Listar todas postagens |
+| Postagem | `GET` | `/api/postagens/filtro` | Filtrar por autor/tema |
+| Tema | `POST` | `/api/temas` | Criar novo tema |
+| Tema | `PUT` | `/api/temas/{id}` | Atualizar tema |
+| Tema | `DELETE` | `/api/temas/{id}` | Deletar tema |
+| Tema | `GET` | `/api/temas` | Listar todos os temas |
 
 ---
 
 ## 🛡️ Segurança
 
-- Tokens **JWT** para autenticação 🔑
-- Senhas seguras com **BCrypt**
-- Endpoints protegidos por perfis de usuário 🔒
+- Autenticação baseada em tokens JWT 🔐
+- Controle de acesso para proteger endpoints 🚫
+- Senhas criptografadas usando BCrypt 🔑
 
 ---
 
-## 📊 Configuração do SonarQube
+## 🛠️ Como Rodar o Projeto
 
 ```bash
-# Execute o container SonarQube
+# Clone o repositório
+git clone https://github.com/Arthur99Silva/blog-pessoal
+
+# Navegue até o diretório do projeto
+cd blog-pessoal-backend
+
+# Configure seu banco de dados no application.properties
+
+# Execute o projeto
+mvn spring-boot:run
+```
+
+A aplicação estará disponível em:  
+➡️ `http://localhost:8080`
+
+A documentação Swagger estará disponível em:  
+➡️ `http://localhost:8080/swagger-ui/index.html`
+
+---
+
+## 📊 Configuração SonarQube
+
+```bash
+# Rodar SonarQube localmente via Docker
 docker run -d --name sonarqube -p 9000:9000 sonarqube
 ```
 
-Crie o arquivo `sonar-project.properties`:
+### Exemplo de arquivo `sonar-project.properties`
 
 ```properties
 sonar.projectKey=blog-pessoal
@@ -116,7 +117,7 @@ sonar.tests=src/test/java
 sonar.java.binaries=target/classes
 ```
 
-Para rodar a análise:
+Para executar a análise de qualidade:
 
 ```bash
 mvn clean install sonar:sonar
@@ -126,15 +127,16 @@ mvn clean install sonar:sonar
 
 ## ✨ Diferenciais do Projeto
 
-- 🧹 **Código limpo** e organizado
-- 📚 **Documentação completa** da API
-- 🔒 **Segurança robusta** com JWT e BCrypt
-- 📈 **Análise de qualidade contínua** com SonarQube
-- 🏛️ **Arquitetura em camadas (MVC)**
+- Código limpo e bem organizado 🧹
+- Arquitetura MVC e DTOs 🛠️
+- Segurança robusta 🔒
+- Endpoints documentados 📄
+- Análise contínua de qualidade com SonarQube 📈
 
 ---
 
-## ✨ Adendos:
+# 📝 Adendo
+
 Essa é a versão mais funcional do projeto. Foram feitos os testes usando o bando de dados MySQL localmente, assim como o H2.
 Tentei implemengar o SonnarQbe de varias maneiras, até certa parte estava funcional, mas encontrei um bug/erro onde toda vez em que acessava a página, sendo assim é possivel entrar no SonnarQube e realizar testes, porém usando o Github Actions o SonnarQube não se conectava, apenas apresentando o
 bug anteriormente comentado.
