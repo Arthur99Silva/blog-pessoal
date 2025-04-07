@@ -17,6 +17,7 @@ jobs:
         ports:
           - 9000:9000
         options: >-
+          --shm-size=2g
           --health-cmd="curl -f http://localhost:9000/api/system/health || exit 1"
           --health-interval=10s
           --health-timeout=5s
