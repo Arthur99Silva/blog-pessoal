@@ -18,6 +18,7 @@ jobs:
         env:
           SONARQUBE_ADMIN_PASSWORD: admin
           SONARQUBE_WEB_JAVA_OPTS: "-Dsonar.security.forcePasswordReset=false"
+        
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
@@ -48,6 +49,13 @@ jobs:
           done
           echo "SonarQube did not become ready in time"
           exit 1
+
+      - name: Disable forced password reset via API
+        run: |
+          echo "Disabling forced password reset..."
+          curl -X POST -u admin:admin "http://localhost:9001/api/settings/put?key=sonar.security.forcePasswordReset&value=false"
+          echo "Current setting:"
+          curl -s -u admin:admin "http://localhost:9001/api/settings/get?key=sonar.security.forcePasswordReset"
 
       - name: Clear Sonar Cache
         run: rm -rf ~/.sonar/cache
