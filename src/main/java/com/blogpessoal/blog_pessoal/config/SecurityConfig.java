@@ -43,24 +43,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
 protected void configure(HttpSecurity http) throws Exception {
     http
-        .csrf().disable()
+        .csrf().disable() // Desabilita CSRF
         .authorizeRequests()
-        .antMatchers("/auth/**").permitAll()
-        .antMatchers(
-            "/swagger-ui/**",
-            "/swagger-ui.html",
-            "/v3/api-docs/**",
-            "/v3/api-docs",
-            "/v3/api-docs.yaml",
-            "/swagger-resources/**",
-            "/webjars/**",
-            "/api-docs/**" // Linha adicionada
-        ).permitAll()
+        .antMatchers("/auth/**").permitAll() // Libera endpoints de autenticação
         .anyRequest().authenticated()
         .and()
-        .addFilter(new JWTAuthenticationFilter(authenticationManagerBean()))
-        .addFilterBefore(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
-        .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        .addFilter(new JWTAuthenticationFilter(authenticationManagerBean())) // Filtro de login
+        .addFilterBefore(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class) // Filtro de token
+        .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS); // Desabilita sessões
 }
-
 }
