@@ -34,6 +34,21 @@ jobs:
       - name: Clear Sonar Cache
         run: rm -rf ~/.sonar/cache
 
+      - name: Wait for SonarQube to be ready
+        run: |
+          echo "Waiting for SonarQube to be ready..."
+          for i in {1..30}; do
+            STATUS=$(curl -s http://localhost:9001/api/system/health)
+            if echo "$STATUS" | grep -q '"status":"UP"'; then
+              echo "SonarQube is ready!"
+              exit 0
+            fi
+            echo "Not ready yet, waiting 10 seconds..."
+            sleep 10
+          done
+          echo "SonarQube did not become ready in time."
+          exit 1
+
       - name: Run SonarQube Analysis
         env:
           SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
