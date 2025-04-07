@@ -8,7 +8,8 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux]
+
     services:
       sonarqube:
         image: sonarqube:lts
@@ -30,7 +31,7 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
-      # Ativa o perfil de testes para usar o H2 (caso esteja configurado para isso)
+      # Ativa o perfil de testes para utilizar o H2 como banco in-memory
       - name: Build with Maven (using H2 for tests)
         env:
           SPRING_PROFILES_ACTIVE: test
