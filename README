@@ -1,97 +1,108 @@
+
+---
+
+<div align="center">
+
 # 📖 Blog Pessoal - Backend - Montreal
+🚀 Projeto de Backend desenvolvido com Spring Boot, MySQL, JWT, SonarQube e documentado com Swagger! 🚀
 
-Projeto de backend de um **Blog Pessoal** desenvolvido com **Spring Boot 2.7.18** 🚀, **MySQL** 🛢️, **SonarQube** 📊 e documentado com **Swagger** 📄.
+</div>
 
-## 🛠️ Tecnologias Utilizadas
+---
 
-- ☕ **Java 17**
-- 🌱 **Spring Boot 2.7.18**
-- 🛢️ **MySQL**
-- 🔒 **Spring Security** + **JWT**
-- 📚 **Swagger** (OpenAPI)
-- 🧹 **SonarQube** (Análise de Código)
-- 📦 **Maven**
+## 🔥 Tecnologias Utilizadas
+
+<div align="center">
+  
+| Tecnologia | Versão |
+|:-----------|:-------|
+| ☕ Java | 17+ |
+| 🌱 Spring Boot | 2.7.18 |
+| 🛢️ Banco de Dados | MySQL |
+| 🔒 Segurança | Spring Security + JWT |
+| 📚 Documentação | Swagger |
+| 📊 Análise de Código | SonarQube |
+| 📦 Gerenciamento de Dependências | Maven |
+
+</div>
+
+---
 
 ## 📋 Funcionalidades
 
-### 👥 Gerenciamento de Usuários
-- Cadastro de novos usuários
-- Atualização e exclusão de usuários
-- Login com validação de e-mail e senha
-- Geração de token JWT para autenticação
+- **👥 Usuários**
+  - Cadastro, atualização e exclusão
+  - Autenticação com JWT
 
-### 📝 Gerenciamento de Postagens
-- Criação, atualização e exclusão de postagens
-- Listagem de todas as postagens
-- Filtro de postagens por autor e/ou tema
+- **📝 Postagens**
+  - Criar, editar, excluir e listar postagens
+  - Filtro por autor e/ou tema
 
-### 🎨 Gerenciamento de Temas
-- Criação, atualização e exclusão de temas
-- Listagem de todos os temas
+- **🎨 Temas**
+  - Gerenciar temas (CRUD)
 
-### 🔐 Segurança
-- Autenticação de usuários com JWT
-- Controle de permissões por tipo de usuário
-- Senhas armazenadas com BCrypt
+- **🔐 Segurança**
+  - Criptografia de senha com BCrypt
+  - Controle de permissões por tipo de usuário
 
-### 🔍 Análise de Código
-- Integração com **SonarQube** para métricas de qualidade
-- Análise de vulnerabilidades, complexidade e cobertura de testes
+- **📊 Qualidade**
+  - Análise contínua de código com SonarQube
 
-## 🌐 Endpoints da API
+---
 
-### 🔗 Usuário (`/api/usuarios`)
-- `POST /` - Cadastrar novo usuário
-- `PUT /{id}` - Atualizar usuário
-- `DELETE /{id}` - Deletar usuário
-- `POST /login` - Logar e gerar token
-
-### 🔗 Postagem (`/api/postagens`)
-- `POST /` - Criar postagem
-- `PUT /{id}` - Atualizar postagem
-- `DELETE /{id}` - Deletar postagem
-- `GET /` - Listar todas postagens
-- `GET /filtro?autor={id}&tema={id}` - Filtrar postagens
-
-### 🔗 Tema (`/api/temas`)
-- `POST /` - Criar tema
-- `PUT /{id}` - Atualizar tema
-- `DELETE /{id}` - Deletar tema
-- `GET /` - Listar todos os temas
-
-## 🛡️ Segurança
-
-- Tokens JWT usados para autenticação 🔒
-- Controle de acesso para proteger endpoints 🚫
-- Senhas criptografadas com BCrypt 🔑
-
-## 🛠️ Como Rodar o Projeto
+## 🚀 Como Executar o Projeto
 
 ```bash
-# Clone o repositório
-git clone https://github.com/Arthur99Silva/blog-pessoal.git
+# 1. Clone o repositório
+git clone https://github.com/seu-usuario/blog-pessoal-backend.git
 
-# Navegue até o diretório do projeto
+# 2. Acesse o diretório do projeto
 cd blog-pessoal-backend
 
-# Configure seu banco de dados no application.properties
+# 3. Configure seu banco de dados em application.properties
 
-# Execute o projeto
+# 4. Execute o projeto
 mvn spring-boot:run
 ```
 
-A aplicação estará disponível em: `http://localhost:8080`
+📍 Acesse a aplicação:  
+`http://localhost:8080`
 
-A documentação da API estará disponível em:  
-➡️ `http://localhost:8080/swagger-ui/index.html`
+📍 Documentação da API (Swagger UI):  
+`http://localhost:8080/swagger-ui/index.html`
 
-## 🎯 Configuração SonarQube
+---
+
+## 🌐 Principais Endpoints
+
+| Funcionalidade | Método | Endpoint | Descrição |
+|:---------------|:-------|:---------|:----------|
+| Cadastro de Usuário | `POST` | `/api/usuarios` | Cria novo usuário |
+| Login | `POST` | `/api/usuarios/login` | Gera token JWT |
+| Atualizar Usuário | `PUT` | `/api/usuarios/{id}` | Atualiza dados do usuário |
+| Criar Postagem | `POST` | `/api/postagens` | Nova postagem |
+| Listar Postagens | `GET` | `/api/postagens` | Lista todas postagens |
+| Filtrar Postagens | `GET` | `/api/postagens/filtro` | Filtro por autor/tema |
+| Gerenciar Tema | `POST/PUT/DELETE/GET` | `/api/temas` | CRUD de temas |
+
+---
+
+## 🛡️ Segurança
+
+- Tokens **JWT** para autenticação 🔑
+- Senhas seguras com **BCrypt**
+- Endpoints protegidos por perfis de usuário 🔒
+
+---
+
+## 📊 Configuração do SonarQube
 
 ```bash
+# Execute o container SonarQube
 docker run -d --name sonarqube -p 9000:9000 sonarqube
 ```
 
-Depois de iniciar o SonarQube, configure o arquivo `sonar-project.properties`:
+Crie o arquivo `sonar-project.properties`:
 
 ```properties
 sonar.projectKey=blog-pessoal
@@ -111,13 +122,15 @@ Para rodar a análise:
 mvn clean install sonar:sonar
 ```
 
+---
+
 ## ✨ Diferenciais do Projeto
 
-- Código limpo e bem organizado 🧹
-- Padrão de camadas (Controller, Service, Repository, Model, DTO) 🛠️
-- Segurança robusta 🔒
-- Endpoints documentados 📄
-- Análise contínua de qualidade com SonarQube 📈
+- 🧹 **Código limpo** e organizado
+- 📚 **Documentação completa** da API
+- 🔒 **Segurança robusta** com JWT e BCrypt
+- 📈 **Análise de qualidade contínua** com SonarQube
+- 🏛️ **Arquitetura em camadas (MVC)**
 
 ---
 
@@ -131,3 +144,11 @@ Nessa versão tentei deixar tudo bem comentado e obedecendo boas práticas de pr
 Qualquer dúvida estou a disposição.
 
 Observação: Existem duas branchs, a main, que onde esta o projeto com os controllers adaptados para o SWAGGER, com os requisitos funcionais em funcionamento 100%, e a branch Testes, onde o projeto esta completamente funcional, usando o H2 e os banco de dados local, porém com parte do SonnarQube funcionando.
+
+<div align="center">
+
+
+
+</div>
+
+---
