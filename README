@@ -2,6 +2,12 @@
 
 Projeto de backend de um **Blog Pessoal** desenvolvido com **Spring Boot 2.7.18** 🚀, **MySQL** 🛢️, **SonarQube** 📊 e documentado com **Swagger** 📄.  
 
+📝 Adendo
+Essa é a versão mais funcional do projeto. Foram feitos testes usando MySQL e H2 localmente.
+🔧 SonarQbe 100% funcional localmente.
+🔧 Integração contínua: Utilização do GitHub Actions para análise com SonarQube, 
+tentei implementar com adição de testes do SonarQube pelo Actions, desenvolvimento dessa funcionalidade ainda em andamento.
+
 ---
 
 ## 🛠️ **Tecnologias Utilizadas**  
@@ -110,7 +116,5 @@ mvn clean install sonar:sonar
 
 📈 Análise contínua de qualidade com SonarQube
 
-📝 Adendo
-Essa é a versão mais funcional do projeto. Foram feitos testes usando MySQL e H2 localmente.
-🔧 Integração contínua: Utilização do GitHub Actions para análise com SonarQube.
+
 
